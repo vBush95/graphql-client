@@ -38,10 +38,13 @@ const refreshTokenLink = new TokenRefreshLink({
     }
   },
   fetchAccessToken: async () => {
-    const result = await fetch("http://localhost:4000/refresh_token", {
-      method: "POST",
-      credentials: "include",
-    });
+    const result = await fetch(
+      "https://server-meine-tolle-seite-1.herokuapp.com//refresh_token",
+      {
+        method: "POST",
+        credentials: "include",
+      }
+    );
     return result;
   },
   handleFetch: (accessToken) => {
@@ -89,7 +92,8 @@ const authLink = new ApolloLink((operation, forward) => {
 });
 
 const httpLink = new HttpLink({
-  uri: "http://localhost:4000/graphql",
+  //uri: "http://localhost:4000/graphql",
+  uri: "https://server-meine-tolle-seite-1.herokuapp.com/graphql",
   credentials: "include",
   /*
   request: (operation) => {
@@ -105,15 +109,19 @@ const httpLink = new HttpLink({
   */
 });
 
-export const wsClient = new SubscriptionClient("ws://localhost:4000/graphql", {
-  //reconnect: true,
-  lazy: true,
-  connectionParams: () => {
-    const token = getAccessToken();
-    const decodedToken = jwtDecode(token);
-    return { decodedToken };
-  },
-});
+export const wsClient = new SubscriptionClient(
+  "ws://server-meine-tolle-seite-1.herokuapp.com/graphql",
+  //"ws://localhost:4000/graphql"
+  {
+    //reconnect: true,
+    lazy: true,
+    connectionParams: () => {
+      const token = getAccessToken();
+      const decodedToken = jwtDecode(token);
+      return { decodedToken };
+    },
+  }
+);
 
 wsClient.onConnected(() => console.log("websocket connected!!"));
 wsClient.onDisconnected(() => console.log("websocket disconnected!!"));
