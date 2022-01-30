@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InputField from "./InputField";
+import InputField from "../InputField";
 import RegisterMultiStepper from "./RegisterMultiStepper";
 import { gql, useMutation } from "@apollo/client";
 import RegisterFormButton from "./RegisterFormButton";
@@ -35,9 +35,8 @@ const VALIDATE_PASSWORD = gql`
 const REGISTER = gql`
   mutation register($registerInput: RegisterInput) {
     register(registerInput: $registerInput) {
-      id
+      _id
       email
-      token
       username
       createdAt
     }

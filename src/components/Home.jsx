@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import RegisterForm from "./RegisterForm";
+import RegisterForm from "./Register/RegisterForm";
 
 const Home = () => {
   return (
@@ -11,9 +11,7 @@ const Home = () => {
       <nav>
         <Link to="/test">Test</Link>
         <hr />
-        <Link to="/messages">Messages</Link>
       </nav>
-      <RegisterForm />
     </div>
   );
 };
