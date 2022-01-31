@@ -113,8 +113,8 @@ export const wsClient = new SubscriptionClient(
   "wss://server-meine-tolle-seite-1.herokuapp.com/graphql",
   //"ws://localhost:4000/graphql"
   {
-    //reconnect: true,
-    lazy: true,
+    reconnect: true,
+    //lazy: true,
     connectionParams: () => {
       const token = getAccessToken();
       const decodedToken = jwtDecode(token);
