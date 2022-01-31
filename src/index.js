@@ -39,7 +39,7 @@ const refreshTokenLink = new TokenRefreshLink({
   },
   fetchAccessToken: async () => {
     const result = await fetch(
-      "https://server-meine-tolle-seite-1.herokuapp.com//refresh_token",
+      "https://server-meine-tolle-seite-1.herokuapp.com/refresh_token",
       {
         method: "POST",
         credentials: "include",
