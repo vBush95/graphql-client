@@ -110,7 +110,7 @@ const httpLink = new HttpLink({
 });
 
 export const wsClient = new SubscriptionClient(
-  "ws://server-meine-tolle-seite-1.herokuapp.com/graphql",
+  "wss://server-meine-tolle-seite-1.herokuapp.com/graphql",
   //"ws://localhost:4000/graphql"
   {
     //reconnect: true,
